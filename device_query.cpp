@@ -102,6 +102,15 @@ int main(){
 
             std::cout << "  CL_DEVICE_NAME: " << l_tmp_string << std::endl;
 
+            l_err = clGetDeviceInfo(    l_did,
+                                        CL_DEVICE_OPENCL_C_VERSION,
+                                        sizeof(l_tmp_string),
+                                        &l_tmp_string, 
+                                        NULL );
+            assert( l_err == CL_SUCCESS );
+
+            std::cout << "  CL_DEVICE_OPENCL_C_VERSION: " << l_tmp_string << std::endl;
+
             cl_ulong l_global_mem_size = 0;
             l_err = clGetDeviceInfo(    l_did,
                                         CL_DEVICE_GLOBAL_MEM_SIZE,
