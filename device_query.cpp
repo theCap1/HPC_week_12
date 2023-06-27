@@ -111,6 +111,17 @@ int main(){
 
             std::cout << "  CL_DEVICE_OPENCL_C_VERSION: " << l_tmp_string << std::endl;
 
+            // CL_DEVICE_MAX_COMPUTE_UNITS does not work yet!!!
+            cl_uint l_max_compute_units = 0;
+            l_err = clGetDeviceInfo(    l_did,
+                                        CL_DEVICE_MAX_COMPUTE_UNITS,
+                                        sizeof(l_max_compute_units),
+                                        &l_max_compute_units, 
+                                        NULL );
+            assert( l_err == CL_SUCCESS );
+
+            std::cout << "  CL_DEVICE_MAX_COMPUTE_UNITS: " << l_max_compute_units << std::endl;
+
             cl_ulong l_global_mem_size = 0;
             l_err = clGetDeviceInfo(    l_did,
                                         CL_DEVICE_GLOBAL_MEM_SIZE,
@@ -120,6 +131,16 @@ int main(){
             assert( l_err == CL_SUCCESS );
 
             std::cout << "  CL_DEVICE_GLOBAL_MEM_SIZE: " << l_global_mem_size << std::endl;
+
+            cl_ulong l_local_mem_size = 0;
+            l_err = clGetDeviceInfo(    l_did,
+                                        CL_DEVICE_LOCAL_MEM_SIZE,
+                                        sizeof(l_local_mem_size),
+                                        &l_local_mem_size, 
+                                        NULL );
+            assert( l_err == CL_SUCCESS );
+
+            std::cout << "  CL_DEVICE_LOCAL_MEM_SIZE: " << l_local_mem_size << std::endl;
         }
     }
     
