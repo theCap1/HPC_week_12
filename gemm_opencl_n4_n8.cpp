@@ -151,7 +151,7 @@ int main(){
 
     // allocate  host memory
     std::cout << "allocating host memory" << std::endl;
-    const std::size_t dataSize = 2;
+    const std::size_t dataSize = 1;
     std::size_t l_m = dataSize*4;
     std::size_t l_n = dataSize*8;
     std::size_t l_k = dataSize*8;
@@ -188,15 +188,15 @@ int main(){
     std::cout << "initialization of A completed!" << std::endl;
 
     // test print array A
-    // std::cout << "print array A in float4 data type:" << std::endl;
-    // for (std::size_t i = 0; i < l_m; i++)
-    // {
-    //     for (std::size_t j = 0; j < l_k/4; j++)
-    //     {
-    //         std::cout << l_a_host[i*l_k/4+j].w << "\t" << l_a_host[i*l_k/4+j].x << "\t" << l_a_host[i*l_k/4+j].y << "\t" << l_a_host[i*l_k/4+j].z << "\t";
-    //     }
-    //     std::cout << std::endl;
-    // // }
+    std::cout << "print array A in float4 data type:" << std::endl;
+    for (std::size_t i = 0; i < l_m; i++)
+    {
+        for (std::size_t j = 0; j < l_k/4; j++)
+        {
+            std::cout << l_a_host[i*l_k/4+j].w << "\t" << l_a_host[i*l_k/4+j].x << "\t" << l_a_host[i*l_k/4+j].y << "\t" << l_a_host[i*l_k/4+j].z << "\t";
+        }
+        std::cout << std::endl;
+    }
     
     // std::cout << "printing of A completed!" << std::endl;
 
@@ -228,30 +228,30 @@ int main(){
     std::cout << "initialization of B completed!" << std::endl;
 
     // test print array B
-    // std::cout << "print array B in float4 data type:" << std::endl;
-    // for (std::size_t i = 0; i < l_k/4; i++)
-    // {
-    //     for (std::size_t j = 0; j < l_n; j++)
-    //     {
-    //         std::cout << l_b_host[i+j*l_k/4].w << "\t";
-    //     }
-    //     std::cout << std::endl;
-    //     for (std::size_t j = 0; j < l_n; j++)
-    //     {
-    //         std::cout << l_b_host[i+j*l_k/4].x << "\t";
-    //     }
-    //     std::cout << std::endl;
-    //     for (std::size_t j = 0; j < l_n; j++)
-    //     {
-    //         std::cout << l_b_host[i+j*l_k/4].y << "\t";
-    //     }
-    //     std::cout << std::endl;
-    //     for (std::size_t j = 0; j < l_n; j++)
-    //     {
-    //         std::cout << l_b_host[i+j*l_k/4].z << "\t";
-    //     }
-    //     std::cout << std::endl;
-    // }
+    std::cout << "print array B in float4 data type:" << std::endl;
+    for (std::size_t i = 0; i < l_k/4; i++)
+    {
+        for (std::size_t j = 0; j < l_n; j++)
+        {
+            std::cout << l_b_host[i+j*l_k/4].w << "\t";
+        }
+        std::cout << std::endl;
+        for (std::size_t j = 0; j < l_n; j++)
+        {
+            std::cout << l_b_host[i+j*l_k/4].x << "\t";
+        }
+        std::cout << std::endl;
+        for (std::size_t j = 0; j < l_n; j++)
+        {
+            std::cout << l_b_host[i+j*l_k/4].y << "\t";
+        }
+        std::cout << std::endl;
+        for (std::size_t j = 0; j < l_n; j++)
+        {
+            std::cout << l_b_host[i+j*l_k/4].z << "\t";
+        }
+        std::cout << std::endl;
+    }
 
     // array C
     for (std::size_t i = 0; i < l_m*l_n/4; i++)
@@ -368,14 +368,14 @@ int main(){
 
     l_tmp_uint = static_cast<cl_uint>(l_n);
     l_err = clSetKernelArg( l_gemm,
-                            3,
+                            4,
                             sizeof(cl_uint),
                             &l_tmp_uint );
     assert( l_err == CL_SUCCESS );
 
     l_tmp_uint = static_cast<cl_uint>(l_k);
     l_err = clSetKernelArg( l_gemm,
-                            3,
+                            5,
                             sizeof(cl_uint),
                             &l_tmp_uint );
     assert( l_err == CL_SUCCESS );
