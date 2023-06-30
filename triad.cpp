@@ -144,7 +144,7 @@ int main(){
         l_c_host[l_en] = -1;
     }
 
-    std::cout << "allocation devoce memory" << std::endl;
+    std::cout << "allocation device memory" << std::endl;
 
     cl_mem l_a_device = clCreateBuffer( l_context,
                                         CL_MEM_READ_ONLY, 
